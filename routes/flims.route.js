@@ -4,7 +4,7 @@ import {
   Flimdelete,
   Flimindex,
   Flimupdate,
-} from "../controllers/flims.controllers";
+} from "../controllers/flims.controllers.js";
 
 const router = express.Router();
 

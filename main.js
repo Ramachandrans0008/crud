@@ -1,8 +1,13 @@
 import express from "express";
 import flimRoutes from "./routes/flims.route.js";
+import connectDB from "./lib/db.js";
 
 const app = express();
 const PORT = 8000;
+
+// Connect Database
+
+connectDB();
 
 app.get("/", (req, res) => {
   res.json({ msg: "Hii Buddy" });
