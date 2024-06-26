@@ -1,29 +1,27 @@
 import express from "express";
+import {
+  Flimcreate,
+  Flimdelete,
+  Flimindex,
+  Flimupdate,
+} from "../controllers/flims.controllers";
 
 const router = express.Router();
 
 // R - For Reading
 
-router.get("/", (req, res) => {
-  res.send("Getting all Flims");
-});
+router.get("/", Flimindex);
 
 // C - For Creating
 
-router.post("/", (req, res) => {
-  res.send("Creating all Flims");
-});
+router.post("/", Flimcreate);
 
 // U - For Updating
 
-router.put("/:id", (req, res) => {
-  res.send("Updating all Flims");
-});
+router.put("/:id", Flimupdate);
 
 // D - For Deleting
 
-router.delete("/:id", (req, res) => {
-  res.send("Deleting all Flims");
-});
+router.delete("/:id", Flimdelete);
 
 export default router;
