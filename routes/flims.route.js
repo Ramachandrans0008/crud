@@ -12,6 +12,7 @@ const router = express.Router();
 // R - For Reading
 // This is for getting whole items
 router.get("/", Flimindex);
+
 // This is for getting specific one using ID
 
 router.get("/:id", Flimdetails);

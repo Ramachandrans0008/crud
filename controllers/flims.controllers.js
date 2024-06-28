@@ -12,6 +12,21 @@ export const Flimindex = async (req, res) => {
   }
 };
 
+// Getting specific by ID
+
+export const Flimdetails = async (req, res) => {
+  try {
+    const flims = await flim.findById(req.params.id);
+    if (flim == null) {
+      return res.status(404).json({ message: "cannot find flim" });
+    } else {
+      res.json(flims);
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 // C - For Creating
 export const Flimcreate = async (req, res) => {
   // id,title,desc
@@ -29,23 +44,22 @@ export const Flimcreate = async (req, res) => {
   }
 };
 
-// Getting specific by ID
-
-export const Flimdetails = async (req, res) => {
+// U - For Updating
+export const Flimupdate = async (req, res) => {
   try {
-    const flims = await flim.findById(req.params.id);
-    if (flim == null) {
-      return res.status(404).json({ message: "cannot find flim" });
-    } else {
-      res.json(flims);
-    }
+    const updatedflim = await flim.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        title: req.body.title,
+        desc: req.body.desc,
+      },
+      { new: true }
+    );
+    res.status(200).json(updatedflim);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    res.status(400).json({ message: error.message });
   }
 };
-
-// U - For Updating
-export const Flimupdate = async (req, res) => {};
 
 // D - For Deleting
 export const Flimdelete = (req, res) => {
