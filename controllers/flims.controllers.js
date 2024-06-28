@@ -62,6 +62,12 @@ export const Flimupdate = async (req, res) => {
 };
 
 // D - For Deleting
-export const Flimdelete = (req, res) => {
-  res.send("Deleting all Flims");
+export const Flimdelete = async (req, res) => {
+  const flimid = req.params.id;
+  try {
+    await flim.deleteOne({ _id: flimid });
+    res.json({ message: "flim Deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
