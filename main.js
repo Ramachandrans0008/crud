@@ -9,13 +9,15 @@ const PORT = 8000;
 
 connectDB();
 
+// Middleware for data understanding
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.json({ msg: "Hii Buddy" });
 });
 // CRUD FUNCTIONALITY STARTED
 
 // Client -> MIDLEWARE -> Server
-
 app.use("/flims", flimRoutes);
 
 app.listen(PORT, () => {
